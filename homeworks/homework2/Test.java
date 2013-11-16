@@ -4,8 +4,8 @@ public class Test{
 	public static void main(String [] args){
 		testPlotFarm();
 		testPaintSectors();
-		testMoneyChecker();
-		testBingo();
+		//testMoneyChecker();
+		//testBingo();
 	}
 
 
