@@ -6,6 +6,8 @@
 
 package homework1;
 
+import homework1.StringUtil;
+
 /**
  *
  * @author gnipitella
