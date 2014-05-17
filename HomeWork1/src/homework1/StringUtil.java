@@ -109,26 +109,37 @@ public class StringUtil{
             longitudCadenaPrimera=cadenaPrimera.length();
             char caracter ='#';
             
+
+        for(int i=0; i<longitudCadenaPrimera;i++){
+            //System.out.println("interaccion numero:"+i);
+            caracter=cadenaPrimera.charAt(i);
+            if(Character.isDigit(caracter)==true ){
+               // System.out.println("es Digito:"+i);
             
-            for(int i=0; i<longitudCadenaPrimera;i++){
-                //System.out.println("interaccion numero:"+i);
-                caracter=cadenaPrimera.charAt(i);
-                if(Character.isDigit(caracter)==true){
-                   // System.out.println("es Digito:"+i);
-                   valorDigito=Character.digit(caracter , 10);
-                   //System.out.println("el Valor es:"+valorDigito);
-                   for (int j=1; j<valorDigito;j++){
-                   //System.out.println("lo Repito"+j+" veces");
-                   nuevaCadena=nuevaCadena+cadenaPrimera.charAt(i+1);
-                   }
-                }
-                else{
-                     //System.out.println("no es Digito:"+i);
-                nuevaCadena=nuevaCadena+cadenaPrimera.charAt(i);
-                }
-                
-                }
-                
+               valorDigito=Character.digit(caracter , 10);
+               switch (valorDigito) {
+                    case 0:
+                        nuevaCadena=nuevaCadena+"";
+                        i=i+1;
+                    break;
+                    default:
+                        for (int j=1; j<valorDigito;j++){
+                        //System.out.println("lo Repito"+j+" veces");
+                        nuevaCadena=nuevaCadena+cadenaPrimera.charAt(i+1);
+                        }
+                    break;
+               }
+               
+               //System.out.println("el Valor es:"+valorDigito);
+               
+            }
+            else{
+                 //System.out.println("no es Digito:"+i);
+            nuevaCadena=nuevaCadena+cadenaPrimera.charAt(i);
+            }
+
+        }
+
             
             
             cadenaFinal=nuevaCadena.trim();
@@ -140,6 +151,10 @@ public class StringUtil{
             int longitudCadena=cadena.length();
             int contadorPrimario=1;
             int contadorFinal=1;
+            if(longitudCadena==0){
+                contadorFinal=0;
+            }
+            else{
             for (int i=0;i<longitudCadena-1;i++){
                 ;
                 Character caracterAComparar=cadena.charAt(i);
@@ -159,7 +174,7 @@ public class StringUtil{
                 else {
                     contadorPrimario=1;
                 }
-            }
+            }}
             
 		return contadorFinal;
 	}
