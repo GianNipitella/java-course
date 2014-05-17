@@ -178,4 +178,71 @@ public class StringUtil{
             
 		return contadorFinal;
 	}
+        
+public static void arbolBinario (String str){
+           //@todo debe Buscar parentesis
+    
+            String cadenaOriginal=removeAllOccurrences(str,' ');
+           // System.out.println(cadenaOriginal);
+            String cadena1="";
+            String cadena2="";
+            int existeIgual=0;
+            existeIgual=cadenaOriginal.indexOf("=");
+            //System.out.println(existeIgual);
+            int existeMas=0;
+            existeMas=cadenaOriginal.indexOf("+");
+            int existeMenos=0;
+            existeMenos=cadenaOriginal.indexOf("-");
+            int existePor=0;
+            existePor=cadenaOriginal.indexOf("*");
+            int existeEntre=0;
+            existeEntre=cadenaOriginal.indexOf("/");
+            int existeSquare=0;
+            existeSquare=cadenaOriginal.indexOf("^");
+            
+            //verifica si existe igual y separa en 2 subStrings
+            if(existeIgual>0){
+            cadena1=cadenaOriginal.substring(0, existeIgual);
+            cadena2=cadenaOriginal.substring(existeIgual+1, cadenaOriginal.length());
+            System.out.println(cadena1+" igual "+cadena2);
+            arbolBinario(cadena1);
+            arbolBinario(cadena2);
+            }
+            if(existeMas>0 & existeIgual==-1){
+            cadena1=cadenaOriginal.substring(0, existeMas);
+            cadena2=cadenaOriginal.substring(existeMas+1, cadenaOriginal.length());
+            System.out.println(cadena1+" mas "+cadena2);
+            arbolBinario(cadena1);
+            arbolBinario(cadena2);
+            }
+            if(existeMenos>0 && existeMas==-1 && existeIgual==-1){
+            cadena1=cadenaOriginal.substring(0, existeMenos);
+            cadena2=cadenaOriginal.substring(existeMenos+1, cadenaOriginal.length());
+            System.out.println(cadena1+" menos "+cadena2);
+            arbolBinario(cadena1);
+            arbolBinario(cadena2);
+            }
+            if(existePor>0 && existeMenos==-1 && existeMas==-1 && existeIgual==-1){
+            cadena1=cadenaOriginal.substring(0, existePor);
+            cadena2=cadenaOriginal.substring(existePor+1, cadenaOriginal.length());
+            System.out.println(cadena1+" por "+cadena2);
+            arbolBinario(cadena1);
+            arbolBinario(cadena2);
+            }
+            if(existeEntre>0 && existePor==-1 && existeMenos==-1 && existeMas==-1 && existeIgual==-1){
+            cadena1=cadenaOriginal.substring(0, existeEntre);
+            cadena2=cadenaOriginal.substring(existeEntre+1, cadenaOriginal.length());
+            System.out.println(cadena1+" entre "+cadena2);
+            arbolBinario(cadena1);
+            arbolBinario(cadena2);
+            }
+            if(existeSquare>0 && existeEntre==-1 && existePor==-1 && existeMenos==-1 && existeMas==-1 && existeIgual==-1){
+            cadena1=cadenaOriginal.substring(0, existeSquare);
+            cadena2=cadenaOriginal.substring(existeSquare+1, cadenaOriginal.length());
+            System.out.println(cadena1+" Elevado a la "+cadena2);
+            arbolBinario(cadena1);
+            arbolBinario(cadena2);
+            }
+        }        
 }
+
